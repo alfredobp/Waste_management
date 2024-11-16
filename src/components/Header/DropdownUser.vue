@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { logout } from "@/services/auth";
+import { getUserData } from '@/services/users';
+
+const userData = ref(null);
+
 
 function handleLogout() {
   logout();
@@ -12,6 +16,15 @@ const dropdownOpen = ref(false)
 onClickOutside(target, () => {
   dropdownOpen.value = false
 })
+
+
+onMounted(async () => {
+  try {
+    userData.value = await getUserData();
+  } catch (error) {
+    console.error("Error al cargar los datos del usuario:", error);
+  }}
+)
 </script>
 
 <template>
@@ -22,8 +35,8 @@ onClickOutside(target, () => {
       @click.prevent="dropdownOpen = !dropdownOpen"
     >
       <span class="hidden text-right lg:block">
-        <span class="block text-sm font-medium text-black dark:text-white">Thomas Anree</span>
-        <span class="block text-xs font-medium">UX Designer</span>
+        <span class="block text-sm font-medium text-black dark:text-white">{{ userData?.first_name??null }}  {{ userData?.last_name }}</span>
+        <span class="block text-xs font-medium">{{ userData?.rol??null }}</span>
       </span>
 
       <span class="h-12 w-12 rounded-full">
