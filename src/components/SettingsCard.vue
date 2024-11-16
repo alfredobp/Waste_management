@@ -12,6 +12,7 @@ interface FormData {
   phone: string;
   email:string;
   rol:string;
+  DocumentData: any;
   
   // Add other properties as needed
 }
@@ -22,6 +23,7 @@ const formData = ref<FormData>( {
   phone: '',
   email: '',
   rol: '',
+  DocumentData: {},
 
   // Add other properties as needed
 })
@@ -72,7 +74,7 @@ const updatePhoto = () => {
 }
 onMounted(async ()=>{
 
-  formData!.value=await  getUserData();
+  // formData.value=await  getUserData();
 })
 </script>
 
@@ -290,20 +292,12 @@ onMounted(async ()=>{
         <div class="p-7">
           <form>
             <div class="mb-5">
-              <label
-                class="mb-3 block text-sm font-medium text-black dark:text-white"
-                for="userPhoto"
-                >Upload Photo</label
-              >
+            
+            
               <div class="flex justify-center items-center">
                 <div
                   class="h-32 w-32 flex justify-center items-center rounded-full overflow-hidden bg-gray-100 dark:bg-meta-4"
                 >
-                  <img
-                    class="object-cover w-full h-full"
-                    src="userPhoto"
-                    alt="User Photo"
-                  />
                 </div>
               </div>
             </div>
