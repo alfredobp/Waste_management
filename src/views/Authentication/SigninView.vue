@@ -10,7 +10,7 @@ import { auth } from '@/firebase';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 // Estado para el título de la página
-const pageTitle = ref('Sign In');
+const pageTitle = ref('Inciar Sesión');
 
 // Estado para el formulario
 const email = ref('');
@@ -57,7 +57,7 @@ const handleGoogleSignIn = async () => {
     <BreadcrumbDefault :pageTitle="pageTitle" />
     <!-- Breadcrumb End -->
 
-    <DefaultAuthCard subtitle="Start for free" title="Sign In to TailAdmin">
+    <DefaultAuthCard subtitle="" title="Sign In to Waste Management Solution">
       <form @submit="handleSignIn">
     
         <InputGroup
