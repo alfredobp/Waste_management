@@ -74,7 +74,7 @@ const updatePhoto = () => {
 }
 onMounted(async ()=>{
 
-   formData.value=await  getUserData();
+  //  formData.value=await  getUserData();
 })
 </script>
 
