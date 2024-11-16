@@ -5,6 +5,10 @@ import { getUserData, saveUserData } from '@/services/users';
 interface FormData {
   first_name: string;
   last_name: string;
+  phone: string;
+  email:string;
+  rol:string;
+  documentData: string;
   
   // Add other properties as needed
 }
@@ -12,6 +16,10 @@ interface FormData {
 const formData = ref<FormData>({
   first_name: '',
   last_name: '',
+  phone: '',
+  email: '',
+  documentData: '',
+  rol: '',
 
   // Add other properties as needed
 })
@@ -32,6 +40,12 @@ const handleSubmit = async () => {
   // Handle form submission for personal information
 }
 
+/**
+ * Handles the cancel action for personal information form.
+ * Redirects the user to the home page when the cancel button is clicked.
+ */
+/*************  ✨ Codeium Command ⭐  *************/
+/******  44ca21cc-57b6-4001-b607-b8a92f5bb7ff  *******/
 const handleCancel = () => {
   // Handle cancel action for personal information
     router.push(('/'))
@@ -49,12 +63,6 @@ const handlePhotoCancel = () => {
   // Handle cancel action for user photo
 }
 
-/*************  ✨ Codeium Command ⭐  *************/
-  /**
-   * Deletes the user photo. This function is called when the user clicks on the delete
-   * button next to the user photo.
-   */
-/******  19ab757d-885a-4525-8ac5-9dc8d499e1d5  *******/
 const deletePhoto = () => {
   // Handle delete action for user photo
 }
