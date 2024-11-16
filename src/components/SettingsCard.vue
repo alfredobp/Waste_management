@@ -2,6 +2,10 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from "vue-router";
 import { getUserData, saveUserData } from '@/services/users';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 interface FormData {
   first_name: string;
   last_name: string;
@@ -242,7 +246,7 @@ onMounted(async ()=>{
               <label
                 class="mb-3 block text-sm font-medium text-black dark:text-white"
                 for="Username"
-                >{{$t('rol')}}</label
+                >{{t('rol')}}</label
               >
               <input
                 v-model="formData.rol"
