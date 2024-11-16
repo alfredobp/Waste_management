@@ -4,7 +4,7 @@ import { getReportsForCompany } from '@/services/company';
 import { useAuthStore } from '@/stores/authStore';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
-
+import * as XLSX from 'xlsx';
 const authStore = useAuthStore();
 const uidCompany = authStore?.userData?.company ?? '4cs12ENBMQdRf9m8j48B';
 
@@ -51,16 +51,28 @@ const downloadPDF = () => {
   // Descargar el archivo PDF
   doc.save('reportes.pdf');
 };
+// Función para descargar la tabla en formato Excel
+const downloadExcel = () => {
+  const table = document.querySelector('table');
+  const worksheet = XLSX.utils.table_to_sheet(table); // Convierte la tabla en una hoja de cálculo
+  const workbook = XLSX.utils.book_new(); // Crea un nuevo libro de trabajo
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Reportes'); // Agrega la hoja al libro
+  XLSX.writeFile(workbook, 'reportes.xlsx'); // Descarga el archivo
+};
 </script>
 
 <template>
   <div
     class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
-  >
-    <button @click="downloadPDF" class="mb-4 bg-primary text-white py-2 px-4 rounded">
+    >
+    <div class="mt-4 flex gap-2">
+    <button @click="downloadPDF" class=" bg-primary text-white py-2 px-4 rounded">
       Descargar PDF
     </button>
-
+      <button @click="downloadExcel" class=" bg-primary text-white rounded mr-2">
+        Descargar en Excel
+      </button>
+    </div>
     <div class="max-w-full overflow-x-auto">
       <table class="w-full table-auto">
         <thead>
