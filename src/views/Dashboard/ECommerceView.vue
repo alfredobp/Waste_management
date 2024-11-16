@@ -10,19 +10,26 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { getUserData } from '@/services/users';
 import { onMounted, ref } from 'vue'
 
-const userData = ref(null);
+interface UserData {
+  first_name: string;
+  last_name: string;
+  rol: string;
+}
+
+const userData = ref<UserData | null>(null);
 
 onMounted(async () => {
   try {
-    userData.value = await getUserData();
+    userData.value = await getUserData() as UserData;
   } catch (error) {
     console.error("Error al cargar los datos del usuario:", error);
-  }}
-)
+  }
+})
+
 </script>
 
 <template>
-  <DefaultLayout>
+<DefaultLayout>
    Hello {{ userData?.first_name }} {{ userData?.last_name }} ({{ userData?.rol }})
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
       <DataStatsOne />

@@ -4,9 +4,12 @@ import { ref, onMounted } from 'vue'
 import { logout } from "@/services/auth";
 import { getUserData } from '@/services/users';
 
-const userData = ref(null);
+const userData = ref<any | null>(null);
 
-
+/**
+ * Logs the user out of the application.
+ * @returns {void}
+ */
 function handleLogout() {
   logout();
 }

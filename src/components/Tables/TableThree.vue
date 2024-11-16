@@ -8,8 +8,21 @@ import * as XLSX from 'xlsx';
 const authStore = useAuthStore();
 const uidCompany = authStore?.userData?.company ?? '4cs12ENBMQdRf9m8j48B';
 
-const packages = ref([]);
+interface Package {
+  id: string;
+  description_waste: string;
+  code_ler: string;
+  emission_date: string;
+  status: string;
+  created_at: {
+    seconds: number;
+    nanoseconds: number;
+  }
 
+  // Add other properties as needed
+}
+
+const packages = ref<any[]>([]); // Correctamente tipado como un arreglo de Package
 const fetchReportsForCompany = async (companyId: string) => {
   try {
     console.log(uidCompany);
@@ -23,7 +36,6 @@ const fetchReportsForCompany = async (companyId: string) => {
 onMounted(async () => {
   await fetchReportsForCompany(uidCompany);
 });
-
 // Función para descargar el PDF
 const downloadPDF = () => {
   const doc = new jsPDF();
