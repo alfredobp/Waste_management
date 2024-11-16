@@ -12,7 +12,6 @@ interface FormData {
   phone: string;
   email:string;
   rol:string;
-  documentData: string;
   
   // Add other properties as needed
 }
@@ -22,7 +21,6 @@ const formData = ref<FormData>({
   last_name: '',
   phone: '',
   email: '',
-  documentData: '',
   rol: '',
 
   // Add other properties as needed
@@ -48,8 +46,6 @@ const handleSubmit = async () => {
  * Handles the cancel action for personal information form.
  * Redirects the user to the home page when the cancel button is clicked.
  */
-/*************  ✨ Codeium Command ⭐  *************/
-/******  44ca21cc-57b6-4001-b607-b8a92f5bb7ff  *******/
 const handleCancel = () => {
   // Handle cancel action for personal information
     router.push(('/'))
