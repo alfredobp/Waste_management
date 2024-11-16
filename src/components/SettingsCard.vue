@@ -2,8 +2,18 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from "vue-router";
 import { getUserData, saveUserData } from '@/services/users';
-const formData = ref({
- 
+interface FormData {
+  first_name: string;
+  last_name: string;
+  
+  // Add other properties as needed
+}
+
+const formData = ref<FormData>({
+  first_name: '',
+  last_name: '',
+
+  // Add other properties as needed
 })
 const successSave=ref(false)
 import userPhoto from '@/assets/images/user/user-03.png'
@@ -39,6 +49,12 @@ const handlePhotoCancel = () => {
   // Handle cancel action for user photo
 }
 
+/*************  ✨ Codeium Command ⭐  *************/
+  /**
+   * Deletes the user photo. This function is called when the user clicks on the delete
+   * button next to the user photo.
+   */
+/******  19ab757d-885a-4525-8ac5-9dc8d499e1d5  *******/
 const deletePhoto = () => {
   // Handle delete action for user photo
 }
